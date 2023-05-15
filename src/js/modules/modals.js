@@ -1,10 +1,15 @@
 const modals = () => {
-    function bindModal(triggerSelector, modalSelector, closeSelector) {
-        const trigger = document.querySelectorAll(triggerSelector),
+    let bindModal = (triggerSelector, modalSelector, closeSelector) => {
+        const triggers = document.querySelectorAll(triggerSelector),
               modal = document.querySelector(modalSelector),
               close = document.querySelector(closeSelector);
 
-        trigger.forEach(item => {
+    let closeModal = () => {
+        modal.style.display = "none";
+        document.body.style.overflow = "";
+    };
+
+        triggers.forEach(item => {
             item.addEventListener('click', (e) => {
                 if (e.target) {
                     e.preventDefault();
@@ -14,29 +19,30 @@ const modals = () => {
                 document.body.style.overflow = "hidden";
             });
         });
-            // document.body.classList.remove('modal-open');
 
         close.addEventListener('click', () => {
-            modal.style.display = "none";
-            document.body.style.overflow = "";
-            // document.body.classList.remove('modal-open');
+            closeModal();
         });
 
         modal.addEventListener('click', (e) => {
             if (e.target === modal) {
-                modal.style.display = "none";
-                document.body.style.overflow = "";
-                // document.body.classList.remove('modal-open');
+                closeModal();
             }
         });
-    }
 
-    function showModalByTime(selector, time) {
+        document.addEventListener('keydown', (e) => {
+            if (e.code === "Escape") {
+                closeModal();
+            }
+        });
+    };
+
+    let showModalByTime = (selector, time) => {
         setTimeout(function() {
             document.querySelector(selector).style.display = "block";
             document.body.style.overflow = "";
         }, time);
-    }
+    };
 
     bindModal('.popup_engineer_btn', '.popup_engineer', '.popup_engineer .popup_close');
     bindModal('.phone_link', '.popup', '.popup .popup_close');
