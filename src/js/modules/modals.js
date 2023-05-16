@@ -1,5 +1,5 @@
 const modals = () => {
-  let bindModal = (triggerSelector, modalSelector, closeSelector) => {
+  const bindModal = (triggerSelector, modalSelector, closeSelector) => {
     const triggers = document.querySelectorAll(triggerSelector);
     const modal = document.querySelector(modalSelector);
     const close = document.querySelector(closeSelector);
@@ -37,7 +37,7 @@ const modals = () => {
     });
   };
 
-  let showModalByTime = (selector, time) => {
+  const showModalByTime = (selector, time) => {
     setTimeout(function () {
       document.querySelector(selector).style.display = "block";
       document.body.style.overflow = "";
