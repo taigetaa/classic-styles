@@ -4,6 +4,16 @@ import initTabs from './modules/initTabs';
 
 window.addEventListener('DOMContentLoaded', () => {
     modals();
-    initTabs('.glazing_slider', '.glazing_block', '.glazing_content', 'active');
-    initTabs('.decoration_slider', '.no_click', '.decoration_content > div > div', 'after_click');
+    initTabs({
+        headerSelector: '.glazing_slider',
+        tabSelector: '.glazing_block',
+        contentSelector: '.glazing_content',
+        activeClass: 'active'
+    });
+    initTabs({
+        headerSelector: '.decoration_slider',
+        tabSelector: '.no_click',
+        contentSelector: '.decoration_content > div > div',
+        activeClass: 'after_click'
+    });
 });
