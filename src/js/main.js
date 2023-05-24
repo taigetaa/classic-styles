@@ -1,8 +1,10 @@
 import "./slider";
 import modals from './modules/modals';
 import initTabs from './modules/initTabs';
+import initForms from './modules/forms';
 
 window.addEventListener('DOMContentLoaded', () => {
+    "use strict";
     modals();
     initTabs({
         headerSelector: '.glazing_slider',
@@ -16,4 +18,5 @@ window.addEventListener('DOMContentLoaded', () => {
         contentSelector: '.decoration_content > div > div',
         activeClass: 'after_click'
     });
+    initForms();
 });
