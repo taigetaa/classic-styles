@@ -1,15 +1,11 @@
+import checkNumInputs from './checkNumInputs';
 import { event } from "jquery";
 
-const initForms = () => {
+const initForms = (state) => {
   const forms = document.querySelectorAll("form");
   const inputs = document.querySelectorAll("inpit");
-  const phoneInputs = document.querySelectorAll("input[name='user_phone']");
 
-  phoneInputs.forEach((number) => {
-    number.addEventListener("input", () => {
-      number.value = number.value.replace(/\D/, "");
-    });
-  });
+  checkNumInputs("input[name='user_phone']");
 
   const message = {
     loading: "Загрузка...",
@@ -33,7 +29,7 @@ const initForms = () => {
     });
   };
 
-  forms.forEach((event) => {
+  forms.forEach(event => {
     event.addEventListener("submit", (e) => {
       e.preventDefault();
 
@@ -42,6 +38,11 @@ const initForms = () => {
       event.appendChild(statusMessage);
 
       const formData = new FormData(event);
+      if (event.getAttribute('data-calc') === "end") {
+        for (let key in state) {
+          formData.append(key, state[key]);
+        }
+      }
 
       postData("assets/server.php", formData)
         .then((res) => {

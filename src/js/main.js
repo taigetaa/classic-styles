@@ -2,21 +2,33 @@ import "./slider";
 import modals from "./modules/modals";
 import initTabs from "./modules/initTabs";
 import initForms from "./modules/forms";
+import changeModalState from "./modules/changeModalState";
 
 window.addEventListener("DOMContentLoaded", () => {
   "use strict";
+
+  let modalState = {};
+
+  changeModalState(modalState);
   modals();
   initTabs({
     headerSelector: ".glazing_slider",
     tabSelector: ".glazing_block",
     contentSelector: ".glazing_content",
-    activeClass: "active",
+    activeClass: "active"
   });
   initTabs({
     headerSelector: ".decoration_slider",
     tabSelector: ".no_click",
     contentSelector: ".decoration_content > div > div",
-    activeClass: "after_click",
+    activeClass: "after_click"
   });
-  initForms();
+  initTabs({
+    headerSelector: ".balcon_icons",
+    tabSelector: ".balcon_icons_img",
+    contentSelector: ".big_img > img",
+    activeClass: "do_image_more",
+    display: 'inline-block'
+  });
+  initForms(modalState);
 });
