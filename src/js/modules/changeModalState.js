@@ -17,15 +17,9 @@ const changeModalState = (state) => {
           case "SPAN":
             state[prop] = i;
             break;
-          case "INPUT":
-            if (item.getAttribute("type") === "checkbox") {
+            case "INPUT":
+            if (item.getAttribute("type") === "radio") {
               i === 0 ? state[prop] = "Холодное" : state[prop] = "Теплое";
-              elem.forEach((box, j) => {
-                box.checked = false;
-                if (i == j) {
-                    box.checked = true;
-                }
-              });
             } else {
                 state[prop] = item.value;
             }
