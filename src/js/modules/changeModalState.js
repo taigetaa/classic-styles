@@ -17,14 +17,10 @@ const changeModalState = (state) => {
           case "SPAN":
             state[prop] = i;
             break;
-          case "INPUT":
-            if (item.getAttribute("type") === "radio") {
+            case "INPUT":
               if (i === 0) {
                 state[prop] = item.value;
               }
-            } else {
-              state[prop] = item.value;
-            }
             break;
           case "SELECT":
             state[prop] = item.value;
