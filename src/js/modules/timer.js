@@ -14,9 +14,8 @@ const timer = (id, deadline) => {
     const timer = document.querySelector(selector);
     const days = document.querySelector("#days");
 
-    updateClock();
+    const updateClock = () => {
 
-    function updateClock() {
       const t = getTimeRemaining(endtime);
 
       days.textContent = t.days;
@@ -33,6 +32,7 @@ const timer = (id, deadline) => {
         clearInterval(timeInterval);
       }
     };
+    updateClock();
     const timeInterval = setInterval(updateClock, 1000);
   };
 
