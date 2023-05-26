@@ -19,7 +19,7 @@ const changeModalState = (state) => {
             break;
             case "INPUT":
             if (item.getAttribute("type") === "radio") {
-              i === 0 ? state[prop] = "Холодное" : state[prop] = "Теплое";
+              i === 0 ? state[prop] = item.value : state[prop] = item.value;
             } else {
                 state[prop] = item.value;
             }
