@@ -839,7 +839,11 @@ textarea:focus {
   height: 100%;
   z-index: 9;
   background-color: rgba(0, 0, 0, 0.5);
-  object-position: 50% 50%;
+  /* object-position: 50% 50%; */
+}
+
+.popup_img img {
+  width: 45%;
 }
 
 .myimage {
